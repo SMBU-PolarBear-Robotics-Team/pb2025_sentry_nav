@@ -54,9 +54,10 @@ SensorScanGenerationNode::SensorScanGenerationNode(const rclcpp::NodeOptions & o
 
   sync_ = std::make_unique<message_filters::Synchronizer<SyncPolicy>>(
     SyncPolicy(100), odometry_sub_, laser_cloud_sub_);
-  sync_->registerCallback(std::bind(
-    &SensorScanGenerationNode::laserCloudAndOdometryHandler, this, std::placeholders::_1,
-    std::placeholders::_2));
+  sync_->registerCallback(
+    std::bind(
+      &SensorScanGenerationNode::laserCloudAndOdometryHandler, this, std::placeholders::_1,
+      std::placeholders::_2));
 }
 
 void SensorScanGenerationNode::laserCloudAndOdometryHandler(
