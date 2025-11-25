@@ -12,7 +12,7 @@ jobs:
         uses: gerlero/add-apt-repository@v1
         with:
           uri: http://apt.llvm.org/jammy/
-          suite: llvm-toolchain-noble-21
+          suite: llvm-toolchain-jammy-21
           key: https://apt.llvm.org/llvm-snapshot.gpg.key
 
       - name: Install clang-format and clang-tidy
