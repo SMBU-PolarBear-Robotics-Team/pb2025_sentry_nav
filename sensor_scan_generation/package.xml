@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>sensor_scan_generation</name>
-  <version>1.3.1</version>
+  <version>1.3.2</version>
   <description>sensor_scan_generation is a package to generate scan data in sensor frame with registered_scan in map frame.</description>
   <maintainer email="lihanchen2004@163.com">Lihan Chen</maintainer>
   <license>Apache-2.0</license>

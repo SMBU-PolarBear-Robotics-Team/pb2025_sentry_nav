@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>fake_vel_transform</name>
-  <version>1.3.1</version>
+  <version>1.3.2</version>
   <description>Adapts to NAV2 local path planner when `robot_base_frame` changes drastically.</description>
   <maintainer email="lihanchen2004@163.com">Lihan Chen</maintainer>
   <license>Apache-2.0</license>

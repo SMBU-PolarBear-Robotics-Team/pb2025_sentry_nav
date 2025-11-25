@@ -82,7 +82,7 @@ docker run -it --rm --name pb2025_sentry_nav \
   -e "DISPLAY=$DISPLAY" \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /dev:/dev \
-  ghcr.io/smbu-polarbear-robotics-team/pb2025_sentry_nav:1.3.1
+  ghcr.io/smbu-polarbear-robotics-team/pb2025_sentry_nav:1.3.2
 ```
 
 ### 2.2 Option 2: Build From Source
