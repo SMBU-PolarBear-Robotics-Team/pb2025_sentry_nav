@@ -17,8 +17,8 @@
   <depend>pcl_conversions</depend>
 
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
   <test_depend>ament_cmake_clang_format</test_depend>
+  <test_depend>ament_cmake_clang_tidy</test_depend>
   <test_depend>ament_cmake_black</test_depend>
 
   <export>

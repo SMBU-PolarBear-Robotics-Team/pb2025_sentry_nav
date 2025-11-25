@@ -1,0 +1,27 @@
+name: Build
+on:
+  pull_request:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    container:
+      image: rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-desktop-latest
+    steps:
+      - name: Add LLVM APT repository
+        uses: gerlero/add-apt-repository@v1
+        with:
+          uri: http://apt.llvm.org/jammy/
+          suite: llvm-toolchain-noble-21
+          key: https://apt.llvm.org/llvm-snapshot.gpg.key
+
+      - name: Install clang-format and clang-tidy
+        uses: gerlero/apt-install@v1
+        with:
+          packages: clang-format-21 clang-tidy-21
+
+      - name: Build and run tests
+        uses: ros-tooling/action-ros-ci@v0.4
+        with:
+          package-name: pb2025_sentry_nav
+          target-ros2-distro: humble

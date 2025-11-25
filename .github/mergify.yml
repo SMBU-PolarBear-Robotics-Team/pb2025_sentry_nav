@@ -1,0 +1,64 @@
+pull_request_rules:
+  - name: backport to jazzy at reviewers discretion
+    conditions:
+      - base=main
+      - "label=backport-jazzy"
+    actions:
+      backport:
+        branches:
+          - jazzy
+
+  - name: backport to humble at reviewers discretion
+    conditions:
+      - base=main
+      - "label=backport-humble"
+    actions:
+      backport:
+        branches:
+          - humble
+
+  - name: delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch:
+
+  - name: ask to resolve conflict
+    conditions:
+      - conflict
+      - author!=mergify
+    actions:
+        comment:
+          message: This pull request is in conflict. Could you fix it @{{author}}?
+
+  - name: development targets main branch
+    conditions:
+      - base!=main
+      - author!=LihanChen2004
+      - author!=mergify[bot]
+    actions:
+        comment:
+          message: |
+            @{{author}}, all pull requests must be targeted towards the `main` development branch.
+            Once merged into `main`, it is possible to backport to @{{base}}, but it must be in `main`
+            to have these changes reflected into new distributions.
+
+  - name: Main build failures
+    conditions:
+      - base=main
+      - or:
+        - "check-failure=build_and_test"
+    actions:
+        comment:
+          message: |
+            @{{author}}, your PR has failed to build. Please check CI outputs and resolve issues.
+            You may need to rebase or pull in `main` due to API changes (or your contribution genuinely fails).
+
+  - name: automatic merge for pre-commit ci updates
+    conditions:
+      - author=pre-commit-ci[bot]
+      - title=[pre-commit.ci] pre-commit autoupdate
+      - check-success=build_and_test
+    actions:
+      merge:
+        method: squash
